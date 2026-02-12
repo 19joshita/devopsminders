@@ -20,7 +20,7 @@ const brands = [
 export default function Brands() {
   const settings = {
     infinite: true,
-    speed: 9000,
+    speed: 10000, // very smooth
     autoplay: true,
     autoplaySpeed: 0,
     cssEase: "linear",
@@ -28,13 +28,15 @@ export default function Brands() {
     slidesToScroll: 1,
     arrows: false,
     pauseOnHover: false,
-    swipe: false,
-    touchMove: false,
+    swipe: true, // allow swipe on mobile
+    touchMove: true,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 5 } },
-      { breakpoint: 1024, settings: { slidesToShow: 4 } },
-      { breakpoint: 768, settings: { slidesToShow: 3 } },
-      { breakpoint: 480, settings: { slidesToShow: 2 } },
+      { breakpoint: 1536, settings: { slidesToShow: 6 } }, // 2xl
+      { breakpoint: 1280, settings: { slidesToShow: 5 } }, // xl
+      { breakpoint: 1024, settings: { slidesToShow: 4 } }, // lg
+      { breakpoint: 768, settings: { slidesToShow: 3 } }, // md
+      { breakpoint: 480, settings: { slidesToShow: 2 } }, // sm
+      { breakpoint: 320, settings: { slidesToShow: 1 } }, // xs
     ],
   };
 
@@ -43,7 +45,7 @@ export default function Brands() {
       <div className="max-w-7xl mx-auto px-4">
         <Slider {...settings}>
           {brands.map((brand) => (
-            <div key={brand.id} className="px-2 flex justify-center">
+            <div key={brand.id} className="px-3 flex justify-center">
               <div className="flex items-center justify-center h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-full">
                 <img
                   src={brand.image}

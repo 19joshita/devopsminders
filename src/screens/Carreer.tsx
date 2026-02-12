@@ -88,6 +88,7 @@ const Career: React.FC = () => {
     infinite: true,
     speed: 700,
     slidesToShow: 3,
+    slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0px",
     arrows: true,
@@ -96,19 +97,24 @@ const Career: React.FC = () => {
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 2,
-          centerMode: true,
-        },
+        breakpoint: 1536, // 2xl
+        settings: { slidesToShow: 3, centerMode: true, centerPadding: "0px" },
       },
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          centerMode: false,
-          arrows: false,
-        },
+        breakpoint: 1280, // xl
+        settings: { slidesToShow: 2, centerMode: true, centerPadding: "0px" },
+      },
+      {
+        breakpoint: 1024, // lg
+        settings: { slidesToShow: 2, centerMode: true, centerPadding: "0px" },
+      },
+      {
+        breakpoint: 768, // md
+        settings: { slidesToShow: 1, centerMode: false, arrows: false },
+      },
+      {
+        breakpoint: 480, // sm
+        settings: { slidesToShow: 1, centerMode: false, arrows: false },
       },
     ],
   };
@@ -162,10 +168,10 @@ interface ArrowProps {
 
 const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
   <div
-    className="absolute -right-6 top-1/2 -translate-y-1/2 cursor-pointer z-10"
+    className="absolute -right-3 top-1/2 -translate-y-1/2 cursor-pointer z-10"
     onClick={onClick}
   >
-    <div className="bg-white shadow-md rounded-full p-3 hover:scale-110 transition">
+    <div className="bg-white shadow-md rounded-full p-2 hover:scale-110 transition">
       <FaChevronRight size={18} />
     </div>
   </div>
@@ -173,10 +179,10 @@ const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
 
 const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
   <div
-    className="absolute -left-6 top-1/2 -translate-y-1/2 cursor-pointer z-10"
+    className="absolute -left-3 top-1/2 -translate-y-1/2 cursor-pointer z-10"
     onClick={onClick}
   >
-    <div className="bg-white shadow-md rounded-full p-3 hover:scale-110 transition">
+    <div className="bg-white shadow-md rounded-full p-2 hover:scale-110 transition">
       <FaChevronLeft size={18} />
     </div>
   </div>
