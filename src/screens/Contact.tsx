@@ -10,7 +10,7 @@ import {
 
 const Contact: React.FC = () => {
   return (
-    <section className="bg-white overflow-hidden" id="contact">
+    <section className="bg-white overflow-hidden mt-4" id="contact">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
             Contact Us

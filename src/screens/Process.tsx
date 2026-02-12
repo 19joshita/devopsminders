@@ -52,22 +52,7 @@ export default function ProcessSection() {
   const visibleSteps = expanded ? steps : steps.slice(0, 5);
 
   return (
-    <section
-      id="process"
-      className="relative py-28 bg-gradient-to-b from-white via-indigo-50/40 to-white overflow-hidden"
-    >
-      <motion.div
-        animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-        transition={{ duration: 12, repeat: Infinity }}
-        className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-40"
-      />
-
-      <motion.div
-        animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-        transition={{ duration: 14, repeat: Infinity }}
-        className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-purple-100 rounded-full blur-3xl opacity-40"
-      />
-
+    <section id="process" className="relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
