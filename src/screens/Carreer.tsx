@@ -91,17 +91,18 @@ const Career: React.FC = () => {
     centerPadding: "0px",
     arrows: true,
     beforeChange: (_, next) => setActiveIndex(next),
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 768, // Mobile & small tablets
         settings: {
-          slidesToShow: 1,
-          centerMode: false,
+          slidesToShow: 1, // Show only 1 card
+          centerMode: false, // Disable centering for 1 card
+          arrows: false, // Optional: hide arrows for mobile
         },
       },
     ],
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
   };
 
   return (

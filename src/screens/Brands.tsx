@@ -20,7 +20,7 @@ const brands = [
 export default function Brands() {
   const settings = {
     infinite: true,
-    speed: 9000, // smoother + slower = premium
+    speed: 9000,
     autoplay: true,
     autoplaySpeed: 0,
     cssEase: "linear",
@@ -28,12 +28,21 @@ export default function Brands() {
     slidesToScroll: 1,
     arrows: false,
     pauseOnHover: false,
-    swipe: false, // marquee feel
+    swipe: false,
     touchMove: false,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 5 } },
-      { breakpoint: 768, settings: { slidesToShow: 4 } },
-      { breakpoint: 480, settings: { slidesToShow: 3 } },
+      {
+        breakpoint: 1024, // tablets
+        settings: { slidesToShow: 5 },
+      },
+      {
+        breakpoint: 768, // mobile
+        settings: { slidesToShow: 3 }, // show only 3 logos
+      },
+      {
+        breakpoint: 480, // very small phones
+        settings: { slidesToShow: 2 }, // optional, 2 cards for very small screens
+      },
     ],
   };
 
