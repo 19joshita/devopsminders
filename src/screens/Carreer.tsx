@@ -4,6 +4,7 @@ import CareerCard from "../components/CarrierCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
+
 export type CareerItem = {
   id: number;
   image: string;
@@ -85,7 +86,7 @@ const Career: React.FC = () => {
 
   const settings: Settings = {
     infinite: true,
-    speed: 600,
+    speed: 700,
     slidesToShow: 3,
     centerMode: true,
     centerPadding: "0px",
@@ -95,11 +96,18 @@ const Career: React.FC = () => {
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 768, // Mobile & small tablets
+        breakpoint: 1280,
         settings: {
-          slidesToShow: 1, // Show only 1 card
-          centerMode: false, // Disable centering for 1 card
-          arrows: false, // Optional: hide arrows for mobile
+          slidesToShow: 2,
+          centerMode: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false,
+          arrows: false,
         },
       },
     ],
@@ -108,7 +116,6 @@ const Career: React.FC = () => {
   return (
     <section className="py-10 bg-slate-100">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Heading Block */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -116,49 +123,29 @@ const Career: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <h2
-            className="
-              text-2xl
-              sm:text-3xl
-              md:text-4xl
-              font-semibold
-              tracking-tight
-            "
-          >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
             Careers at DevOpsMinders
           </h2>
 
-          <div
-            className="
-              h-[2px]
-              w-16
-              mx-auto
-              mt-3
-              bg-gradient-to-r
-              from-transparent
-              via-slate-400
-              to-transparent
-              opacity-40
-            "
-          />
+          <div className="h-[2px] w-16 mx-auto mt-3 bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-40" />
 
           <p className="text-slate-500 mt-4 text-sm sm:text-base">
             Join a team building high-performance digital infrastructure
           </p>
         </motion.div>
 
-        {/* Slider */}
         <div className="relative">
           <Slider {...settings}>
             {careers.map((career, index) => (
-              <CareerCard
-                key={career.id}
-                image={career.image}
-                title={career.title}
-                description={career.description}
-                isActive={index === activeIndex}
-                highlights={career.highlights}
-              />
+              <div key={career.id} className="px-3">
+                <CareerCard
+                  image={career.image}
+                  title={career.title}
+                  description={career.description}
+                  isActive={index === activeIndex}
+                  highlights={career.highlights}
+                />
+              </div>
             ))}
           </Slider>
         </div>
