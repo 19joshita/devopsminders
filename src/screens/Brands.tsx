@@ -32,16 +32,16 @@ export default function Brands() {
     touchMove: false,
     responsive: [
       {
-        breakpoint: 1024, // tablets
+        breakpoint: 1024,
         settings: { slidesToShow: 5 },
       },
       {
         breakpoint: 768, // mobile
-        settings: { slidesToShow: 3 }, // show only 3 logos
+        settings: { slidesToShow: 3 },
       },
       {
-        breakpoint: 480, // very small phones
-        settings: { slidesToShow: 2 }, // optional, 2 cards for very small screens
+        breakpoint: 480,
+        settings: { slidesToShow: 2 },
       },
     ],
   };
