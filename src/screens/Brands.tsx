@@ -6,7 +6,6 @@ import bmg from "../assets/brands/bmg.png";
 import byjus from "../assets/brands/byjus.png";
 import cpa from "../assets/brands/cpa.png";
 import feerless from "../assets/brands/feerless.png";
-import { useEffect, useState } from "react";
 
 const brands = [
   { id: 1, image: ola },
