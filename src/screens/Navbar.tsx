@@ -40,11 +40,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to section
   const handleClick = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      const yOffset = -80; // navbar height offset
+      const yOffset = -80;
       const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
@@ -64,12 +63,11 @@ export default function Navbar() {
           onClick={() => handleClick("home")}
         >
           <img src={logo} alt="DevOpsMinders Logo" className="h-10 sm:h-12" />
-          <span className="hidden md:inline-block ml-3 font-extrabold text-xl sm:text-2xl text-blue-900 tracking-tight">
+          <span className="ml-3 font-extrabold text-lg sm:text-2xl text-blue-900 tracking-tight">
             DevOpsMinders
           </span>
         </div>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex space-x-10">
           {navLinks.map((link) => (
             <button
@@ -92,7 +90,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -103,7 +100,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
