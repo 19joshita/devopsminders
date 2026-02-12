@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import type { Settings } from "react-slick";
+import React, { useState, useEffect } from "react";
 import CareerCard from "../components/CarrierCard";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Slider from "react-slick";
-import { motion } from "framer-motion";
 
 export type CareerItem = {
   id: number;
@@ -83,41 +81,24 @@ export const careers: CareerItem[] = [
 
 const Career: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [slidesToShow, setSlidesToShow] = useState<number>(3);
 
-  const settings: Settings = {
-    infinite: true,
-    speed: 700,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "0px",
-    arrows: true,
-    beforeChange: (_, next) => setActiveIndex(next),
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1536, // 2xl
-        settings: { slidesToShow: 3, centerMode: true, centerPadding: "0px" },
-      },
-      {
-        breakpoint: 1280, // xl
-        settings: { slidesToShow: 2, centerMode: true, centerPadding: "0px" },
-      },
-      {
-        breakpoint: 1024, // lg
-        settings: { slidesToShow: 2, centerMode: true, centerPadding: "0px" },
-      },
-      {
-        breakpoint: 768, // md
-        settings: { slidesToShow: 1, centerMode: false, arrows: false },
-      },
-      {
-        breakpoint: 480, // sm
-        settings: { slidesToShow: 1, centerMode: false, arrows: false },
-      },
-    ],
-  };
+  // Adjust number of slides based on window width
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 1280) setSlidesToShow(3);
+      else if (width >= 1024) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const prevSlide = () =>
+    setActiveIndex((prev) => (prev - 1 + careers.length) % careers.length);
+  const nextSlide = () => setActiveIndex((prev) => (prev + 1) % careers.length);
 
   return (
     <section className="py-14 bg-slate-100">
@@ -132,28 +113,56 @@ const Career: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
             Careers at DevOpsMinders
           </h2>
-
           <div className="h-[2px] w-16 mx-auto mt-3 bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-40" />
-
           <p className="text-slate-500 mt-4 text-sm sm:text-base">
             Join a team building high-performance digital infrastructure
           </p>
         </motion.div>
 
-        <div className="relative">
-          <Slider {...settings}>
-            {careers.map((career, index) => (
-              <div key={career.id} className="px-3">
-                <CareerCard
-                  image={career.image}
-                  title={career.title}
-                  description={career.description}
-                  isActive={index === activeIndex}
-                  highlights={career.highlights}
-                />
-              </div>
-            ))}
-          </Slider>
+        <div className="relative flex items-center">
+          {/* Prev Arrow */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 z-10 p-2 rounded-full bg-white shadow-md hover:scale-110 transition"
+          >
+            <FaChevronLeft />
+          </button>
+
+          {/* Slider */}
+          <div className="overflow-hidden w-full">
+            <motion.div
+              className="flex transition-transform duration-500"
+              style={{
+                transform: `translateX(-${
+                  (100 / slidesToShow) * activeIndex
+                }%)`,
+              }}
+            >
+              {careers.map((career, index) => (
+                <div
+                  key={career.id}
+                  className="px-3"
+                  style={{ minWidth: `${100 / slidesToShow}%` }}
+                >
+                  <CareerCard
+                    image={career.image}
+                    title={career.title}
+                    description={career.description}
+                    highlights={career.highlights}
+                    isActive={index === activeIndex}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Next Arrow */}
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 z-10 p-2 rounded-full bg-white shadow-md hover:scale-110 transition"
+          >
+            <FaChevronRight />
+          </button>
         </div>
       </div>
     </section>
@@ -161,29 +170,3 @@ const Career: React.FC = () => {
 };
 
 export default Career;
-
-interface ArrowProps {
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
-}
-
-const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
-  <div
-    className="absolute -right-3 top-1/2 -translate-y-1/2 cursor-pointer z-10"
-    onClick={onClick}
-  >
-    <div className="bg-white shadow-md rounded-full p-2 hover:scale-110 transition">
-      <FaChevronRight size={18} />
-    </div>
-  </div>
-);
-
-const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
-  <div
-    className="absolute -left-3 top-1/2 -translate-y-1/2 cursor-pointer z-10"
-    onClick={onClick}
-  >
-    <div className="bg-white shadow-md rounded-full p-2 hover:scale-110 transition">
-      <FaChevronLeft size={18} />
-    </div>
-  </div>
-);

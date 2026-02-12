@@ -30,7 +30,7 @@ const CareerCard: React.FC<CareerCardProps> = ({
         `}
       >
         {/* Image */}
-        <div className="h-44 sm:h-52 overflow-hidden">
+        <div className="h-50 sm:h-52 overflow-hidden">
           <img
             src={image}
             alt={title}
