@@ -115,21 +115,14 @@ export default function Home() {
             </motion.p>
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               className="
-                mt-5 sm:mt-6
-                px-5 sm:px-8
-                py-2.5 sm:py-3
-                bg-blue-900
-                text-white
-                text-xs sm:text-base
-                font-medium
-                rounded-lg
-                shadow-lg
-                hover:bg-blue-800
-                transition
-              "
+                  px-7 py-3 rounded-xl text-sm font-medium mt-5
+                  bg-gradient-to-r from-indigo-500 to-purple-500
+                  text-white shadow-lg shadow-indigo-200
+                  hover:shadow-xl transition-all duration-300 cursor-pointer
+                "
             >
               Get Started Today
             </motion.button>
