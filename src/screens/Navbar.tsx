@@ -40,11 +40,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to section
   const handleClick = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      const yOffset = -80; // navbar height offset
+      const yOffset = -80;
       const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
@@ -59,12 +58,13 @@ export default function Navbar() {
       className="fixed w-full bg-white shadow-md z-50 backdrop-blur-md bg-opacity-90"
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
+        {/* Logo + Website Name */}
         <div
           className="flex items-center cursor-pointer"
           onClick={() => handleClick("home")}
         >
           <img src={logo} alt="DevOpsMinders Logo" className="h-10 sm:h-12" />
-          <span className="hidden md:inline-block ml-3 font-extrabold text-xl sm:text-2xl text-blue-900 tracking-tight">
+          <span className="ml-2 sm:ml-3 font-extrabold text-lg sm:text-2xl text-blue-900 tracking-tight">
             DevOpsMinders
           </span>
         </div>
@@ -93,7 +93,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-2xl text-gray-900"
