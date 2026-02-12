@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import RatingCard from "../components/RatingCard";
 
 const steps = [
   {
@@ -53,7 +54,8 @@ export default function ProcessSection() {
 
   return (
     <section id="process" className="relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 relative">
+      <RatingCard />
+      <div className="max-w-5xl mx-auto px-6 relative mt-14">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

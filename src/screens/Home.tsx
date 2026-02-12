@@ -113,16 +113,21 @@ export default function Home() {
             >
               Fast, secure connectivity to boost your operations.
             </motion.p>
-
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
               className="
-                  px-7 py-3 rounded-xl text-sm font-medium mt-5
-                  bg-gradient-to-r from-indigo-500 to-purple-500
-                  text-white shadow-lg shadow-indigo-200
-                  hover:shadow-xl transition-all duration-300 cursor-pointer
-                "
+      px-7 py-3 rounded-xl text-sm font-medium mt-5
+      bg-gradient-to-r from-indigo-500 to-purple-500
+      text-white shadow-lg shadow-indigo-200
+      hover:shadow-xl transition-all duration-300 cursor-pointer
+    "
             >
               Get Started Today
             </motion.button>
