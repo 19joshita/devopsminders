@@ -54,7 +54,9 @@ export default function ProcessSection() {
 
   return (
     <section id="process" className="relative overflow-hidden">
-      <RatingCard />
+      <div className="p-4">
+        <RatingCard />
+      </div>
       <div className="max-w-5xl mx-auto px-6 relative mt-14">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
