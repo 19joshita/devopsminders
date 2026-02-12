@@ -58,9 +58,9 @@ const ContactForm: React.FC = () => {
           <textarea
             name="message"
             rows={4}
+            placeholder="Enter your message"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            placeholder="Enter your message"
             value={formik.values.message}
             className={`
               w-full mt-1 px-4 py-3 rounded-lg border transition
@@ -69,25 +69,33 @@ const ContactForm: React.FC = () => {
                   ? "border-red-400"
                   : "border-slate-200"
               }
-              focus:outline-none focus:ring-2 focus:ring-black/80
+              focus:outline-none focus:ring-2 focus:ring-blue-500
             `}
           />
-
           {formik.touched.message && formik.errors.message && (
             <p className="text-xs text-red-500 mt-1">{formik.errors.message}</p>
           )}
         </div>
-
-        <button
+        <motion.button
           type="submit"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
           className="
-            w-full py-3 bg-black text-white rounded-lg
-            hover:scale-[1.02] active:scale-[0.98]
-            transition duration-300 shadow-lg
+            w-full
+            py-3
+            mt-5
+            rounded-xl
+            text-sm font-medium
+            bg-gradient-to-r from-indigo-500 to-purple-500
+            text-white
+            shadow-lg shadow-indigo-200
+            hover:shadow-xl
+            transition-all duration-300
+            cursor-pointer
           "
         >
           Send Message
-        </button>
+        </motion.button>
       </motion.form>
     </>
   );
@@ -120,7 +128,7 @@ const FormField = ({
             ? "border-red-400"
             : "border-slate-200"
         }
-        focus:outline-none focus:ring-2 focus:ring-black/80
+        focus:outline-none focus:ring-2 focus:ring-blue-500
       `}
     />
 

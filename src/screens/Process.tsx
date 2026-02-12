@@ -53,7 +53,7 @@ export default function ProcessSection() {
   const visibleSteps = expanded ? steps : steps.slice(0, 5);
 
   return (
-    <section id="process" className="relative overflow-hidden">
+    <section id="process" className="relative overflow-hidden py-4">
       <div className="p-4">
         <RatingCard />
       </div>

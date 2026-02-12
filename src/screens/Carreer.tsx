@@ -114,7 +114,7 @@ const Career: React.FC = () => {
   };
 
   return (
-    <section className="py-10 bg-slate-100">
+    <section className="py-14 bg-slate-100">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 25 }}

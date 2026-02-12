@@ -10,7 +10,7 @@ import {
 
 const Contact: React.FC = () => {
   return (
-    <section className="bg-white overflow-hidden mt-4" id="contact">
+    <section className=" overflow-hidden mt-4 py-14 bg-slate-100" id="contact">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -39,20 +39,13 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="
-              bg-white/90
-              backdrop-blur
-              rounded-3xl
-              shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)]
-              p-5
-              sm:p-9
-            "
+            className="bg-white/90 backdrop-blur rounded-3xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] p-5 sm:p-9"
           >
             <ContactForm />
           </motion.div>
 
           {/* Info Cards */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <InfoCard
               delay={0.15}
               icon={<FaEnvelope />}
@@ -60,18 +53,30 @@ const Contact: React.FC = () => {
               text="Share your requirements and our team will respond shortly."
             />
 
+            {/* WhatsApp Button */}
             <a
               href="https://wa.me/918847599647"
               target="_blank"
               rel="noreferrer"
             >
-              <InfoCard
-                delay={0.2}
-                icon={<FaWhatsapp />}
-                title="Chat on WhatsApp"
-                text="Get fast replies and real-time assistance."
-                highlight
-              />
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                whileHover={{ y: -3, scale: 1.02 }}
+                className="
+                  flex items-center gap-3 w-full md:w-auto px-6 py-4 rounded-2xl 
+                  bg-gradient-to-r from-[#25D366] to-[#1EBEA5] 
+                  text-white font-medium shadow-md hover:shadow-lg 
+                  transition-all duration-300 cursor-pointer
+                "
+              >
+                <FaWhatsapp size={20} />
+                <span className="text-sm sm:text-base font-medium">
+                  Chat on WhatsApp
+                </span>
+              </motion.div>
             </a>
 
             <InfoCard
@@ -103,17 +108,12 @@ const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="
-            mt-24
-            rounded-3xl
-            overflow-hidden
-            shadow-[0_40px_80px_-30px_rgba(0,0,0,0.2)]
-          "
+          className="mt-24 rounded-3xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.2)]"
         >
           <iframe
             title="map"
             src="https://www.google.com/maps?q=Ludhiana,Punjab,India&output=embed"
-            className="w-full h-[320px] sm:h-[400px]"
+            className="w-full h-[320px] sm:h-[450px]"
             loading="lazy"
           />
         </motion.div>
@@ -151,22 +151,14 @@ const InfoCard: React.FC<InfoCardProps> = ({
       rounded-2xl
       p-6
       transition-all
-      ${
-        highlight
-          ? "bg-black text-white shadow-[0_25px_50px_-20px_rgba(0,0,0,0.6)]"
-          : "bg-white shadow-[0_12px_30px_-15px_rgba(0,0,0,0.15)]"
-      }
+      ${highlight ? "bg-black text-white shadow-[0_25px_50px_-20px_rgba(0,0,0,0.6)]" : "bg-white shadow-[0_12px_30px_-15px_rgba(0,0,0,0.15)]"}
     `}
   >
     <div className="flex items-start gap-4">
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
-        className={`
-          mt-0.5
-          text-xl
-          ${highlight ? "text-green-400" : "text-slate-700"}
-        `}
+        className={`mt-0.5 text-xl ${highlight ? "text-green-400" : "text-slate-700"}`}
       >
         {icon}
       </motion.div>
@@ -174,9 +166,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
       <div>
         <h4 className="font-medium text-base mb-1">{title}</h4>
         <p
-          className={`text-sm leading-relaxed ${
-            highlight ? "text-white/80" : "text-slate-600"
-          }`}
+          className={`text-sm leading-relaxed ${highlight ? "text-white/80" : "text-slate-600"}`}
         >
           {text}
         </p>

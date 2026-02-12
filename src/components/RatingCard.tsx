@@ -47,14 +47,23 @@ export default function RatingCard() {
       className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-gray-200"
     >
       {/* Header */}
-      <div className="text-center mb-10">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E2A78]">
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-10"
+      >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
           The Framework Behind Our Solutions
         </h2>
-        <p className="text-gray-600 mt-3 text-base sm:text-lg">
+
+        <div className="h-[2px] w-16 mx-auto mt-3 bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-40" />
+
+        <p className="text-slate-500 mt-4 text-sm sm:text-base">
           Our proven process ensures quality delivery at every stage
         </p>
-      </div>
+      </motion.div>
 
       {/* Rating */}
       <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between mb-10 bg-[#FFEBEE] p-6 rounded-2xl shadow-md">
