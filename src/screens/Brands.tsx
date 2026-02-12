@@ -20,7 +20,7 @@ const brands = [
 export default function Brands() {
   const settings = {
     infinite: true,
-    speed: 10000, // very smooth
+    speed: 9000, // smoother + slower = premium
     autoplay: true,
     autoplaySpeed: 0,
     cssEase: "linear",
@@ -28,29 +28,39 @@ export default function Brands() {
     slidesToScroll: 1,
     arrows: false,
     pauseOnHover: false,
-    swipe: true, // allow swipe on mobile
-    touchMove: true,
+    swipe: false, // marquee feel
+    touchMove: false,
     responsive: [
-      { breakpoint: 1536, settings: { slidesToShow: 6 } }, // 2xl
-      { breakpoint: 1280, settings: { slidesToShow: 5 } }, // xl
-      { breakpoint: 1024, settings: { slidesToShow: 4 } }, // lg
-      { breakpoint: 768, settings: { slidesToShow: 3 } }, // md
-      { breakpoint: 480, settings: { slidesToShow: 2 } }, // sm
-      { breakpoint: 320, settings: { slidesToShow: 1 } }, // xs
+      { breakpoint: 1024, settings: { slidesToShow: 5 } },
+      { breakpoint: 768, settings: { slidesToShow: 4 } },
+      { breakpoint: 480, settings: { slidesToShow: 3 } },
     ],
   };
 
   return (
-    <section className="py-14 bg-slate-50 overflow-hidden">
+    <section className="py-14 bg-slate-50  overflow-hidden mt-10">
       <div className="max-w-7xl mx-auto px-4">
         <Slider {...settings}>
           {brands.map((brand) => (
-            <div key={brand.id} className="px-3 flex justify-center">
-              <div className="flex items-center justify-center h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-full">
+            <div key={brand.id} className="px-1">
+              {/* Equal-sized logo container */}
+              <div
+                className="
+                  h-[155px]
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                "
+              >
                 <img
                   src={brand.image}
                   alt="brand logo"
-                  className="max-h-full max-w-full object-contain"
+                  className="
+                    h-[150px]
+                    w-[250px]
+                    object-fill shadow
+                  "
                 />
               </div>
             </div>
